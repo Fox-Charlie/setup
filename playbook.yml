@@ -6,15 +6,16 @@
   # become: yes # Use sudo for installing software
 
   vars:
-    homebrew_taps:
-      - homebrew/cask
-      - homebrew/cask-versions
-      - homebrew/formulae
+    #homebrew_taps:
+      #- homebrew/cask
+      #- homebrew/cask-versions
+      #- homebrew/formulae
 
     homebrew_packages:
       - htop
       - zoxide
       - tmux
+      - lsd
       - tldr
       - thefuck
       - chezmoi
@@ -44,11 +45,11 @@
     #     name: brew
     #     state: present
 
-    - name: Tap Homebrew repositories
-      community.general.homebrew_tap:
-        name: "{{ item }}"
-        state: present
-      loop: "{{ homebrew_taps }}"
+    # - name: Tap Homebrew repositories
+    #   community.general.homebrew_tap:
+    #     name: "{{ item }}"
+    #     state: present
+    #   loop: "{{ homebrew_taps }}"
 
     - name: Install Homebrew packages
       community.general.homebrew:
