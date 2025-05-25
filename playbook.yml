@@ -1,0 +1,76 @@
+# ~/setup/playbook.yml
+---
+- name: Setup macOS Development Environment
+  hosts: localhost
+  connection: local
+  become: yes # Use sudo for installing software
+
+  vars:
+    homebrew_taps:
+      - homebrew/cask
+      - homebrew/cask-versions
+      - homebrew/formulae
+
+    homebrew_packages:
+      - htop
+      - zoxide
+      - tmux
+      - tldr
+      - thefuck
+      - chezmoi
+      - git-delta
+      - zsh
+      - neovim
+      - uv
+      - powerlevel10k
+      - zsh-autopair
+      - zsh-autosuggestions
+      - zsh-history-substring-search
+      - zsh-syntax-highlighting
+      - zsh-vi-mode
+
+    homebrew_cask_packages:
+      - arc
+      - ghostty
+      - amethyst # window management
+      - obsidian # notes
+      - alfred
+      - dbeaver-community
+      - karabiner-elements
+
+  tasks:
+    - name: Ensure Homebrew is installed
+      community.general.homebrew:
+        name: brew
+        state: present
+
+    - name: Tap Homebrew repositories
+      community.general.homebrew_tap:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ homebrew_taps }}"
+
+    - name: Install Homebrew packages
+      community.general.homebrew:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ homebrew_packages }}"
+
+    - name: Install Homebrew Cask packages
+      community.general.homebrew_cask:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ homebrew_cask_packages }}"
+
+    - name: Set Zsh as default shell
+      ansible.builtin.user:
+        name: "{{ ansible_user_id }}"
+        shell: /bin/zsh
+      # Only run if Zsh isn't already the default
+      when: ansible_user_shell != "/bin/zsh"
+
+    - name: Run Chezmoi apply
+      ansible.builtin.command: chezmoi apply
+      changed_when: true # Always report as changed to ensure it runs
+      args:
+        chdir: "{{ ansible_env.HOME }}" # Run from home directory
