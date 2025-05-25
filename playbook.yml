@@ -3,7 +3,7 @@
 - name: Setup macOS Development Environment
   hosts: localhost
   connection: local
-  become: yes # Use sudo for installing software
+  # become: yes # Use sudo for installing software
 
   vars:
     homebrew_taps:
