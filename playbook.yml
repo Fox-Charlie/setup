@@ -16,7 +16,6 @@
       - fzf
       - zoxide
       - tmux
-      - tpm # tmux plugin manager
       - lsd
       - tldr
       - thefuck
@@ -58,6 +57,13 @@
         name: "{{ item }}"
         state: present
       loop: "{{ homebrew_packages }}"
+
+    - name: Install Tmux Plugin Manager (TPM)
+      ansible.builtin.git:
+        repo: https://github.com/tmux-plugins/tpm
+        dest: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
+        force: yes
+      when: ansible_os_family == "Darwin"
 
     - name: Install Homebrew Cask packages
       community.general.homebrew_cask:
