@@ -39,10 +39,10 @@
       - karabiner-elements
 
   tasks:
-    - name: Ensure Homebrew is installed
-      community.general.homebrew:
-        name: brew
-        state: present
+    # - name: Ensure Homebrew is installed
+    #   community.general.homebrew:
+    #     name: brew
+    #     state: present
 
     - name: Tap Homebrew repositories
       community.general.homebrew_tap:
