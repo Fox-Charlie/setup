@@ -13,6 +13,7 @@
 
     homebrew_packages:
       - htop
+      - fzf
       - zoxide
       - tmux
       - lsd
