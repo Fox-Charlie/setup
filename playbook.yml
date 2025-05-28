@@ -23,6 +23,8 @@
       - git-delta
       - zsh
       - neovim
+      - gnu-sed
+      - ripgrep
       - uv
       - powerlevel10k
       - zsh-autopair
