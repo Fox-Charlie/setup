@@ -42,6 +42,7 @@
       - amethyst # window management
       - obsidian # notes
       - alfred
+      - marta # file manager
       - dbeaver-community
       - karabiner-elements
 
