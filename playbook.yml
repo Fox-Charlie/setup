@@ -17,10 +17,13 @@
       - zoxide
       - tmux
       - lsd
+      - chezmoi
+      - bat
       - tldr
       - thefuck
       - chezmoi
       - git-delta
+      - lazygit
       - zsh
       - neovim
       - gnu-sed
