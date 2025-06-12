@@ -19,6 +19,7 @@
       - lsd
       - chezmoi
       - bat
+      - fd
       - tldr
       - thefuck
       - chezmoi
