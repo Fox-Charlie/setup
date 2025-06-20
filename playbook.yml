@@ -39,6 +39,7 @@
 
     homebrew_cask_packages:
       - arc
+      - zen
       - ghostty
       - amethyst # window management
       - obsidian # notes
