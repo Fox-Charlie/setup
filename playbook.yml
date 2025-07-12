@@ -27,6 +27,7 @@
       - lazygit
       - zsh
       - neovim
+      - git
       - gnu-sed
       - ripgrep
       - uv
